@@ -1,0 +1,124 @@
+#include <iostream>
+#include<conio.h>
+#include <bits/stdc++.h>
+#include<string>
+using namespace std;
+
+class products
+{
+    char product_name[20];
+
+
+  public:
+       int product_id=0;
+      void getdata()
+      {
+
+
+       cout<<"\nenter the the product_name:";
+       cin>>product_name;
+        cout<<"\nenter the product Id\n";
+       cin>>product_id;
+
+      }
+
+      void display()
+      {
+
+          cout<<"Product name is :"<<product_name<<" \t "<<"\nProduct id is:"<<product_id;
+      }
+      void delet()
+      {
+          strcpy(product_name,"*******");
+          product_id=0;
+      }
+};
+class sales : public products
+ {
+     int ms;
+public:
+     void sale()
+     {
+
+         cout<<"\n please enter the monthly sales of the product:\n";
+         cin>>ms;
+     }
+     void show()
+     {
+         cout<<"\nmonthly sale of the product:\n"<<ms;
+     }
+     void remo()
+     {
+         ms=0;
+     }
+ };
+int main()
+{
+    sales p[500];
+    int i=0;
+    int n=0;
+    int k=0;
+    cout<<"\nEnter the no. of products made by the organization\n";
+    cin>>n;
+    for(i=0;i<n;i++)
+    {
+    p[i].getdata();
+     p[i].sale();
+
+    getch();
+    }
+    cout<<"Your data is given below:\n";
+      for(i=0;i<n;i++)
+    {
+        cout<<"\n";
+         p[i].display();
+cout<<"\n";
+    p[i].show();
+    }
+
+    cout<<"what do you want to do:press 1:Eliminate/2:Modify/3:DISPLAY";
+    cin>>k;
+    switch(k)
+    {
+        case 1: cout<<"enter the product id to remove\n";
+                int q;
+                cin>>q;
+                for(i=0;i<n;i++)
+                {
+                    if(q==p[i].product_id)
+                    {
+                        p[i].delet();
+                        p[i].remo();
+                    }
+
+                }
+                break;
+            case 2:cout<<"enter the product id to modify\n";
+                    cin>>q;
+                    for(i=0;i<n;i++)
+                    {
+
+                    if(q==p[i].product_id)
+                    {
+                        p[i].getdata() ;
+                        p[i].sale();
+                    }
+                    }
+
+                break;
+
+                default:break;
+
+    }
+ cout<<"\n Your Final products";
+                 for(i=0;i<n;i++)
+    {
+        cout<<"\n";
+         p[i].display();
+cout<<"\n";
+    p[i].show();
+    }
+
+    getch();
+    return 0;
+}
